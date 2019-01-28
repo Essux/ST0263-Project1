@@ -1,0 +1,14 @@
+<h1>New Location</h1>
+
+<%= form_for(@location) do |l| %>
+  
+  <%= l.label :longitude %>
+  <%= l.text_field :longitude %>
+  <br>
+
+  <%= l.label :latitude %>
+  <%= l.text_field :latitude %>
+  <br>
+
+  <%= f.submit "Create" %>
+<% end %>

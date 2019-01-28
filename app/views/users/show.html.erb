@@ -1,1 +1,13 @@
-<%= @user.name %>
+<h2><%= @user.name %></h2>
+
+<%= link_to 'New location', new_location_url %>
+
+<% @locations.each do |loc| %>
+  <p> Lon: </p>
+  <%= loc.longitude %>
+  <p> Lat: </p>
+  <%= loc.latitude %>
+  <p> Date: </p>
+  <%= loc.created_at %>
+  <br>
+<% end %>
