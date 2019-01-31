@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @locations = @user.locations
+    @routes = @user.routes
   end
 
   def new
