@@ -3,14 +3,16 @@
 <%= link_to 'New location', locations_url(route_id: @route.id), method: :post %>
 <%= link_to 'View user', current_user %>
 
-<% @locations.each do |loc| %>
-  <p> Lon: </p>
-  <%= loc.longitude %>
-  <p> Lat: </p>
-  <%= loc.latitude %>
-  <p> Date: </p>
-  <%= loc.created_at %>
-  <br>
-<% end %>
-
 <div id='map' style="height: 300px; width: 500px;"></div>
+
+
+<%= map(:center => {
+  :latlng => [@center_lat, @center_lon],
+  :zoom => 10, 
+  },
+  :polylines => [
+    {
+      :latlngs => @latlngs
+    }
+  ]
+) %>
