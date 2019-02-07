@@ -7,22 +7,9 @@ class LocationsController < ApplicationController
             redirect_to current_user
         end
 
-        ip = request.remote_ip
-        location = Geocoder.search(ip)[0]
-        
-        if location.longitude.nil?
-            long = rand(180.0)
-        else
-            long = location.longitude
-        end
+        lat_long = params.permit(:latitude, :longitude)
 
-        if location.longitude.nil?
-            lat = rand(90.0)
-        else
-            lat = location.latitude
-        end
-
-        @location = @route.locations.build(longitude: long, latitude: lat)
+        @location = @route.locations.build(lat_long)
         @location.save
         redirect_to @route
     end

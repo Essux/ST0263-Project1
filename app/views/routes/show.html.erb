@@ -1,7 +1,15 @@
-<h2>Route <%= @route.id %></h2>
+<h2>Route </h2> <h2 id='route-id'><%= @route.id %></h2>
 
-<%= link_to 'New location', locations_url(route_id: @route.id), method: :post %>
+<%- if protect_against_forgery? -%>
+  <meta name="authenticity-token" id="authenticity-token" content="<%= form_authenticity_token %>" />
+<%- end -%>
+
+<%= button_tag 'Start route', id: 'start-record' %>
+<%= button_tag 'Stop route', id: 'stop-record' %>
+
 <%= link_to 'View user', current_user %>
+
+<p>This route has <%= pluralize(@latlngs.count, 'point') %>. </p>
 
 <div id='map' style="height: 300px; width: 500px;"></div>
 
