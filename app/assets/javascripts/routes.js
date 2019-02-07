@@ -5,21 +5,26 @@ $(function(){
     });
 });
 
-//$(document).ready(function (){
+function post_location (position) {
+    console.log("posting position");
+    var route_id = $("#route-id").text();
+    $.post("/locations", 
+    {
+        longitude: position.coords.longitude,
+        latitude: position.coords.latitude,
+        route_id: route_id,
+    });
+}
+
 document.addEventListener("turbolinks:load", function() {
     $("#start-record").click(function () {
-        console.log("starting");
         var interval = window.setInterval(function() {
-            var route_id = $("#route-id").text();
-            $.post("/locations", 
-            {
-                longitude: -1.0,
-                latitude: -1.0,
-                route_id: route_id,
-            });
+            console.log("getting position");
+            navigator.geolocation.getCurrentPosition(post_location);
         }, 10000);
+        console.log("starting");
         console.log(interval);
-        sessionStorage.setItem('interval-update', interval)
+        sessionStorage.setItem('interval-update', interval);
     });
 
     $("#stop-record").click(function () {
