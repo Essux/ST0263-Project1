@@ -1,13 +1,13 @@
-<h2>Route </h2> <h2 id='route-id'><%= @route.id %></h2>
+<h2>Route <span id='route-id'><%= @route.id %></span></h2>
 
 <%- if protect_against_forgery? -%>
   <meta name="authenticity-token" id="authenticity-token" content="<%= form_authenticity_token %>" />
 <%- end -%>
 
-<%= button_tag 'Start route', id: 'start-record' %>
-<%= button_tag 'Stop route', id: 'stop-record' %>
-
-<%= link_to 'View user', current_user %>
+<div>
+  <%= button_tag 'Start route', id: 'start-record' , class: 'btn btn-primary' %>
+  <%= button_tag 'Stop route', id: 'stop-record' , class: 'btn btn-primary' %>
+</div>
 
 <p>This route has <%= pluralize(@latlngs.count, 'point') %>. </p>
 
@@ -24,3 +24,5 @@
     }
   ]
 ) %>
+
+<%= link_to 'Back to routes', current_user %>
