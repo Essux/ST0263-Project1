@@ -66,3 +66,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'leaflet-rails'
 gem 'jquery-rails'
 gem 'geocoder'
+gem 'bootstrap-sass'
