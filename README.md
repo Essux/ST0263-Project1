@@ -1,24 +1,31 @@
-# README
+# ST0263-Project1
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Sitio web para registrar rutas usando localización con GPS. Este proyecto fue creado como parte de la materia de Tópicos Especiales en Telemática.
 
-Things you may want to cover:
+![Screenshot](/app/assets/images/screenshot1.PNG?raw=true "Title")
 
-* Ruby version
+## Dependencias
 
-* System dependencies
+- Ruby
+- Ruby on Rails
+- NGINX
+- SQLite3
 
-* Configuration
+## Instalación
 
-* Database creation
+Requiere Ruby >=2.5.1
 
-* Database initialization
+```
+git clone https://github.com/Essux/ST0263-Project1
+bundle install
+rails db:migrate
+rails server
+```
 
-* How to run the test suite
+## Despliegue con Docker-Compose
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+docker-compose build
+docker-compose run web rails db:migrate
+docker-compose up
+```
