@@ -1,14 +1,22 @@
-<h2>Route <%= @route.id %></h2>
+<h2>Route <span id='route-id'><%= @route.id %></span></h2>
 
-<%= link_to 'New location', locations_url(route_id: @route.id), method: :post %>
-<%= link_to 'View user', current_user %>
+<%- if protect_against_forgery? -%>
+  <meta name="authenticity-token" id="authenticity-token" content="<%= form_authenticity_token %>" />
+<%- end -%>
+
+<div>
+  <%= button_tag 'Start route', id: 'start-record' , class: 'btn btn-primary' %>
+  <%= button_tag 'Stop route', id: 'stop-record' , class: 'btn btn-primary' %>
+</div>
+
+<p>This route has <%= pluralize(@latlngs.count, 'point') %>. </p>
 
 <div id='map' style="height: 300px; width: 500px;"></div>
 
 
 <%= map(:center => {
   :latlng => [@center_lat, @center_lon],
-  :zoom => 10, 
+  :zoom => 5, 
   },
   :polylines => [
     {
@@ -16,3 +24,5 @@
     }
   ]
 ) %>
+
+<%= link_to 'Back to routes', current_user %>

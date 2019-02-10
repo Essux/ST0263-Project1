@@ -1,9 +1,14 @@
 <h2><%= @user.name %></h2>
 
+<span class='glyphicon glyphicon-plus'> </span>
 <%= link_to 'New route', {controller: 'routes', action: 'create'}, method: :post %>
 
 <% @routes.each do |r| %>
-  <p><b> Route <%= r.id %></b></p>
-  <p> Points: <%= r.locations.count %></p>
-  <br>
+  <div class='card'>
+    <div class='card-body'>
+      <h4 class='card-title'> Route <%= r.id %> </h4>
+      Points: <%= r.locations.count %>
+      <%= link_to 'View', r %>
+    </div>
+  </div>
 <% end %>

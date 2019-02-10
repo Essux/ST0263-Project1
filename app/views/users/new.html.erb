@@ -1,19 +1,24 @@
 <h1>Sign up</h1>
 
-<%= form_for(@user) do |f| %>
-  <%= render 'shared/error_messages' %>
-  
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <br>
+<div class='col-sm-4'>
+  <%= form_for(@user) do |f| %>
+    <%= render 'shared/error_messages' %>
+    
+    <div class='form-group'>
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <br>
+    <div class='form-group'>
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %>
+    </div>
 
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-  <br>
+    <div class='form-group'>
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
+    </div>
 
-  <%= f.submit "Create" %>
-<% end %>
+    <%= f.submit "Create", class: 'btn btn-primary' %>
+  <% end %>
+</div>
